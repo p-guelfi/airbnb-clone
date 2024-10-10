@@ -3,6 +3,12 @@
 
 <h1><%= @instrument.name %></h1>
 <p><%= @instrument.description %></p>
-<p>Capacity: <%= @instrument.capacity %></p>
 <p>Price: <%= @instrument.price %></p>
 <%= link_to 'Back to Instruments', instruments_path %>
+
+
+<h2>Book</h2>
+<%= simple_form_for [@instrument, @booking] do |f| %>
+  <%= f.input :dates_range, as: :string, input_html: { data: { controller: "datepicker"} } %>
+  <%= f.submit "Book", class: "btn btn-flat" %>
+<% end %>
